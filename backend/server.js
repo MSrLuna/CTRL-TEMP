@@ -65,18 +65,51 @@ app.get('/api/refrigerador/:id/datos', (req, res) => {
   });
 });
 
-// Método para detectar cambios en la base de datos y notificar a los clientes WebSocket
-setInterval(() => {
-  // Aquí puedes poner lógica para verificar si hay cambios en la base de datos
-  // Si hay un cambio, notificamos a todos los clientes conectados
+// Ruta para insertar un dato de temperatura
+app.post('/api/refrigerador/:id/datos', (req, res) => {
+  const { refrigeradorId, uid, fecha, temperatura, ip } = req.body;
+  const query = 'INSERT INTO datos_temperatura (refrigerador_id, uid, fecha, temperatura, ip) VALUES (?, ?, ?, ?, ?)';
 
-  const data = { message: 'Nueva actualización en los datos' }; // Simulando una actualización
-  wss.clients.forEach(client => {
-    if (client.readyState === WebSocket.OPEN) {
-      client.send(JSON.stringify(data));
+  db.query(query, [refrigeradorId, uid, fecha, temperatura, ip], (err, results) => {
+    if (err) {
+      console.error('Error al insertar los datos:', err.stack);
+      res.status(500).send('Error al insertar los datos');
+    } else {
+      // Enviar notificación a los clientes WebSocket cuando se inserta un nuevo dato
+      const newData = { message: 'Nuevo dato de temperatura', data: [{ refrigerador_id: refrigeradorId, uid, fecha, temperatura, ip }] };
+      wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(JSON.stringify(newData));
+        }
+      });
+
+      res.status(201).send('Dato insertado correctamente');
     }
   });
-}, 5000); // Revisa cambios cada 5 segundos
+});
+
+// Ruta para eliminar un dato de temperatura
+app.delete('/api/datos_temperatura/:id', (req, res) => {
+  const { id } = req.params;
+  const query = 'DELETE FROM datos_temperatura WHERE id = ?';
+
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      console.error('Error al eliminar los datos:', err.stack);
+      res.status(500).send('Error al eliminar los datos');
+    } else {
+      // Enviar notificación a los clientes WebSocket cuando se elimina un dato
+      const deletedData = { message: 'Dato de temperatura eliminado', data: [{ id }] };
+      wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(JSON.stringify(deletedData));
+        }
+      });
+
+      res.status(200).send('Dato eliminado correctamente');
+    }
+  });
+});
 
 // Iniciar el servidor de WebSocket
 app.server = app.listen(port, () => {
