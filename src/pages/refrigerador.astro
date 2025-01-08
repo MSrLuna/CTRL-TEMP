@@ -1,0 +1,27 @@
+---
+import '/src/styles/style.css';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datos del Refrigerador - Rhenania</title>
+  </head>
+  <body>
+    <h1>Datos del Refrigerador</h1>
+    <button onclick="window.history.back();">Volver</button>
+    <table id="temperature-table">
+      <thead>
+        <tr>
+          <th>UID</th>
+          <th>Fecha</th>
+          <th>Temperatura (°C)</th>
+          <th>IP</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script type="module" src="/src/scripts/refrigerador.js"></script>
+  </body>
+</html>
