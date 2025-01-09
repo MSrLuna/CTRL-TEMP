@@ -14,7 +14,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Luna0808.',
+  password: '0808',
   database: 'pasteleria_rhenania'
 });
 
@@ -32,8 +32,6 @@ const wss = new WebSocket.Server({ noServer: true });
 
 // Gestionar las conexiones WebSocket
 wss.on('connection', (ws) => {
-  console.log('Cliente conectado');
-  
   // Enviar datos de temperatura cada vez que se actualice la base de datos
   ws.on('message', (message) => {
     console.log('Mensaje del cliente: ', message);
