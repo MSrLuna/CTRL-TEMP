@@ -32,36 +32,117 @@ p {
 
 /* Contenedor de botones de refrigeradores */
 #refrigerador-buttons-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajuste flexible de columnas */
-  gap: 20px;
-  justify-items: center;
-  padding-top: 40px;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones se acomoden en múltiples filas */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  padding-top: 40px; /* Ajusta el espacio superior */
+  box-sizing: border-box; /* Asegura que los paddings no afecten el tamaño del contenedor */
   animation: fadeIn 2s ease-out;
 }
 
-/* Estilo de cada botón de refrigerador */
+/* Estilo de los botones generales */
 .refrigerador-button {
-  padding: 20px 30px;
-  font-size: 20px;
+  padding: 18px 35px;
+  font-size: 18px;
   color: white;
   background-color: #ff80ab; /* Rosa pastel intenso */
   border: none;
-  border-radius: 30px;
+  border-radius: 50px; /* Bordes más suaves y elegantes */
   cursor: pointer;
-  width: 100%;
-  max-width: 250px;
+  margin: 15px; /* Espaciado entre botones */
+  max-width: 260px; /* Ancho máximo */
   text-align: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease-in-out;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra suave */
+  transition: all 0.3s ease-in-out;
   font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px; /* Un pequeño espaciado entre letras para mayor legibilidad */
+  text-transform: uppercase; /* Hace que el texto se vea más formal */
 }
 
+/* Efecto hover en los botones */
 .refrigerador-button:hover {
-  background-color: #ec407a; /* Rosa fuerte */
-  transform: scale(1.1); /* Aumento sutil de tamaño */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  background-color: #ec407a; /* Rosa fuerte para hover */
+  transform: translateY(-4px); /* Efecto de elevación sutil */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra más profunda en hover */
 }
+
+/* Efecto focus (cuando se hace clic) */
+.refrigerador-button:focus {
+  outline: none; /* Elimina el borde por defecto */
+  box-shadow: 0 0 10px #ec407a; /* Añade un brillo elegante en focus */
+}
+
+/* Botón de la tabla */
+button {
+  background-color: #ff80ab; /* Rosa pastel */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px; /* Bordes redondeados para un toque más suave */
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
+/* Hover para el botón */
+button:hover {
+  background-color: #ec407a; /* Cambio de color a rosa fuerte */
+  transform: translateY(-5px); /* Efecto de elevación en hover */
+}
+
+/* Enlaces */
+a {
+  text-decoration: none;
+  color: #ff80ab; /* Color rosa pastel en enlaces */
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #ec407a; /* Cambio a rosa fuerte en hover */
+  text-decoration: underline;
+}
+
+/* Estilos para los botones de la tabla */
+.refrigerador-button {
+  padding: 18px 35px;
+  font-size: 20px;
+  color: white;
+  background-color: #ff80ab; /* Rosa pastel */
+  border: none;
+  border-radius: 50px; /* Bordes redondeados para mayor elegancia */
+  cursor: pointer;
+  margin: 15px; /* Espaciado entre botones */
+  max-width: 250px; /* Ancho máximo */
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
+  transition: all 0.4s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px; /* Espaciado entre letras */
+  text-transform: uppercase; /* Para un estilo más formal */
+}
+
+/* Botón con el hover */
+.refrigerador-button:hover {
+  background-color: #ec407a; /* Rosa fuerte en hover */
+  transform: translateY(-4px); /* Sutil elevación en hover */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* Sombra más intensa en hover */
+}
+
+/* Focus de los botones */
+.refrigerador-button:focus {
+  outline: none; /* Elimina el borde por defecto */
+  box-shadow: 0 0 10px #ec407a; /* Resaltado sutil en el borde */
+}
+
+
 
 /* Animaciones */
 @keyframes fadeIn {
@@ -88,43 +169,75 @@ p {
 
 /* Estilo de la tabla */
 table {
-  width: 80%;
+  width: 90%; /* Ajuste el tamaño para hacerlo más estilizado */
   margin: 40px auto;
-  border-collapse: collapse;
+  border-collapse: separate; /* Para tener separación entre las celdas */
+  border-spacing: 0; /* Elimina espacio extra entre las celdas */
   background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  overflow: hidden; /* Asegura que no haya bordes visibles fuera del borde redondeado */
   animation: fadeIn 1.5s ease-out;
+  font-family: 'Poppins', sans-serif; /* Fuente más estilizada */
 }
 
 /* Estilo de las celdas y cabeceras de la tabla */
-table, th, td {
-  border: 1px solid #ec407a; /* Rosa fuerte */
-}
-
 th, td {
-  padding: 18px;
-  text-align: left;
+  padding: 20px 30px; /* Espaciado más generoso */
+  text-align: center; /* Centrado de texto */
   font-size: 16px;
-  transition: background-color 0.3s;
+  color: #555; /* Color de texto más suave */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Cabecera de la tabla */
 th {
-  background-color: #f8bbd0; /* Rosa suave */
+  background-color: #fce4ec; /* Rosa suave para el encabezado */
   font-weight: bold;
   font-size: 18px;
+  color: #ec407a; /* Rosa fuerte para el texto */
+  text-transform: uppercase; /* Título en mayúsculas */
+  letter-spacing: 1px; /* Un poco más de espacio entre letras */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+/* Celdas de la tabla */
 td {
-  background-color: #fce4ec;
-  color: #666;
+  background-color: #f9f9f9; /* Fondo blanco muy suave */
+  color: #666; /* Gris suave */
+  border-top: 1px solid #ec407a; /* Línea rosa sutil entre filas */
+  border-bottom: 1px solid #ec407a; /* Línea rosa sutil en el fondo */
 }
 
 /* Efecto hover en las filas de la tabla */
 tr:hover td {
-  background-color: #f48fb1; /* Rosa claro */
+  background-color: #f48fb1; /* Rosa claro al pasar el ratón */
+  transform: translateY(-5px); /* Efecto sutil de elevación */
   cursor: pointer;
 }
+
+/* Fila alterna para mejorar la legibilidad */
+tr:nth-child(even) td {
+  background-color: #fce4ec; /* Rosa claro en filas pares */
+}
+
+/* Agregar un borde más suave alrededor de la tabla */
+table {
+  border: 1px solid #ec407a; /* Rosa suave */
+}
+
+/* Animación al entrar */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* Estilos del modal */
 #modal {
@@ -134,7 +247,7 @@ tr:hover td {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro con mayor opacidad */
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -152,13 +265,26 @@ tr:hover td {
 
 /* Estilo del contenido del modal */
 .modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 20px; /* Bordes más redondeados */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra más sutil */
   width: 80%; /* Ajuste del modal para pantallas grandes */
-  max-width: 500px; /* Tamaño máximo */
+  max-width: 600px; /* Tamaño máximo */
   text-align: center; /* Asegura que el texto esté centrado */
+  animation: fadeInUp 0.5s ease-out; /* Animación de entrada */
+}
+
+/* Animación de aparición */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Modal para pantallas grandes */
@@ -170,7 +296,7 @@ tr:hover td {
 
   .modal-content {
     width: 60%; /* Ajustar el tamaño del modal en pantallas grandes */
-    max-width: 500px; /* Tamaño máximo */
+    max-width: 600px; /* Tamaño máximo */
   }
 }
 
@@ -182,19 +308,31 @@ tr:hover td {
   }
 
   .modal-content {
-    width: 100%; /* Modal ocupa todo el ancho */
-    max-width: 100%; /* No excede el ancho de la pantalla */
+    width: 90%; /* Modal ocupa casi todo el ancho en móviles */
+    max-width: 90%; /* No excede el ancho de la pantalla */
     height: auto; /* Ajuste de altura */
-    padding: 20px;
+    padding: 30px; /* Más espacio dentro del modal */
     text-align: center; /* Asegura que el texto esté centrado */
+    border-radius: 15px; /* Bordes más suaves */
   }
 
   .modal-content button {
     width: 100%; /* Botón de cerrar ocupa toda la pantalla */
-    padding: 15px;
+    padding: 20px;
     font-size: 18px; /* Hacer el botón más grande en móviles */
+    background-color: #ff80ab; /* Rosa pastel */
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .modal-content button:hover {
+    background-color: #ec407a; /* Cambio de color en hover */
   }
 }
+
 
 /* Botón de volver */
 button {
