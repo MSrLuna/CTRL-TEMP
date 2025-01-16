@@ -3,6 +3,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const refrigeradorId = urlParams.get('id');
   const temperatureTable = document.querySelector('#temperature-table tbody');
 
+  // Función para formatear la fecha y hora
+  function formatFecha(fecha) {
+    const opciones = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    };
+    const fechaObj = new Date(fecha);
+    return new Intl.DateTimeFormat('es-ES', opciones).format(fechaObj);
+  }
+
   // Función para mostrar el modal con los datos adicionales
   function showModal(uid, ip) {
     document.getElementById('modal-uid').textContent = uid;
@@ -27,9 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
         datos.forEach(dato => {
           const row = temperatureTable.insertRow();
 
-          // Insertar solo fecha y temperatura
-          row.insertCell(0).textContent = dato.fecha;
+          // Insertar fecha formateada, temperatura y equipo
+          row.insertCell(0).textContent = formatFecha(dato.fecha);
           row.insertCell(1).textContent = dato.temperatura;
+          row.insertCell(2).textContent = dato.equipo;  // Mostrar 'equipo'
 
           // Añadir evento de clic para mostrar los datos adicionales
           row.addEventListener('click', () => {
@@ -55,9 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
       data.data.forEach(dato => {
         const row = temperatureTable.insertRow();
 
-        // Insertar solo fecha y temperatura
-        row.insertCell(0).textContent = dato.fecha;
+        // Insertar fecha formateada, temperatura y equipo
+        row.insertCell(0).textContent = formatFecha(dato.fecha);
         row.insertCell(1).textContent = dato.temperatura;
+        row.insertCell(2).textContent = dato.equipo;  // Mostrar 'equipo'
 
         // Añadir evento de clic para mostrar los datos adicionales
         row.addEventListener('click', () => {
