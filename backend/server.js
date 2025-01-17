@@ -14,11 +14,11 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '0808',
+  password: '0808', // Cambia por tu contraseña de MySQL
   database: 'pasteleria_rhenania'
 });
 
-// Verificar conexión
+// Verificar conexión a la base de datos
 db.connect((err) => {
   if (err) {
     console.error('Error al conectar a la base de datos:', err.stack);
@@ -32,9 +32,10 @@ const wss = new WebSocket.Server({ noServer: true });
 
 // Gestionar las conexiones WebSocket
 wss.on('connection', (ws) => {
-  // Enviar datos de temperatura cada vez que se actualice la base de datos
+  console.log('Cliente WebSocket conectado');
+
   ws.on('message', (message) => {
-    console.log('Mensaje del cliente: ', message);
+    console.log('Mensaje del cliente:', message);
   });
 });
 
@@ -56,17 +57,26 @@ app.get('/api/refrigeradores', (req, res) => {
 });
 
 // Ruta para insertar un dato de temperatura
-app.post('/api/refrigerador/datos', (req, res) => { // Solo una ruta para POST
-  const { refrigeradorId, uid, fecha, temperatura, ip, equipo } = req.body;
-  const query = 'INSERT INTO datos_temperatura (refrigerador_id, uid, fecha, temperatura, ip, equipo) VALUES (?, ?, ?, ?, ?, ?)';
+app.post('/api/refrigerador/datos', (req, res) => {
+  const { refrigeradorId, uid, temperatura, ip, equipo } = req.body;
 
-  db.query(query, [refrigeradorId, uid, fecha, temperatura, ip, equipo], (err, results) => {
+  const query = `
+    INSERT INTO datos_temperatura (refrigerador_id, uid, temperatura, ip, equipo) 
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(query, [refrigeradorId, uid, temperatura, ip, equipo], (err, results) => {
     if (err) {
       console.error('Error al insertar los datos:', err.stack);
       res.status(500).send('Error al insertar los datos');
     } else {
-      // Enviar notificación a los clientes WebSocket cuando se inserta un nuevo dato
-      const newData = { message: 'Nuevo dato de temperatura', data: [{ refrigerador_id: refrigeradorId, uid, fecha, temperatura, ip, equipo }] };
+      console.log('Dato insertado correctamente:', results);
+
+      // Notificar a los clientes WebSocket cuando se inserta un nuevo dato
+      const newData = {
+        message: 'Nuevo dato de temperatura',
+        data: [{ refrigerador_id: refrigeradorId, uid, temperatura, ip, equipo }]
+      };
       wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
           client.send(JSON.stringify(newData));
@@ -78,9 +88,10 @@ app.post('/api/refrigerador/datos', (req, res) => { // Solo una ruta para POST
   });
 });
 
-// Ruta para obtener los datos de temperatura de un refrigerador
+// Ruta para obtener los datos de temperatura de un refrigerador específico
 app.get('/api/refrigerador/:id/datos', (req, res) => {
   const refrigeradorId = req.params.id;
+
   db.query('SELECT * FROM datos_temperatura WHERE refrigerador_id = ?', [refrigeradorId], (err, results) => {
     if (err) {
       console.error('Error al obtener los datos de temperatura:', err.stack);
@@ -91,7 +102,7 @@ app.get('/api/refrigerador/:id/datos', (req, res) => {
   });
 });
 
-// Iniciar el servidor de WebSocket
+// Iniciar el servidor HTTP y WebSocket
 app.server = app.listen(port, () => {
   console.log(`Servidor en ejecución en http://localhost:${port}`);
 });
