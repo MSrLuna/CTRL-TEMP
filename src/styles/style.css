@@ -110,40 +110,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Estilos para los botones de la tabla */
-.refrigerador-button {
-  padding: 18px 35px;
-  font-size: 20px;
-  color: white;
-  background-color: #ff80ab; /* Rosa pastel */
-  border: none;
-  border-radius: 50px; /* Bordes redondeados para mayor elegancia */
-  cursor: pointer;
-  margin: 15px; /* Espaciado entre botones */
-  max-width: 250px; /* Ancho máximo */
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
-  transition: all 0.4s ease-in-out;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 1px; /* Espaciado entre letras */
-  text-transform: uppercase; /* Para un estilo más formal */
-}
-
-/* Botón con el hover */
-.refrigerador-button:hover {
-  background-color: #ec407a; /* Rosa fuerte en hover */
-  transform: translateY(-4px); /* Sutil elevación en hover */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* Sombra más intensa en hover */
-}
-
-/* Focus de los botones */
-.refrigerador-button:focus {
-  outline: none; /* Elimina el borde por defecto */
-  box-shadow: 0 0 10px #ec407a; /* Resaltado sutil en el borde */
-}
-
-
-
 /* Animaciones */
 @keyframes fadeIn {
   0% {
@@ -153,17 +119,6 @@ a:hover {
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -203,224 +158,53 @@ th {
 
 /* Celdas de la tabla */
 td {
-  background-color: #f9f9f9; /* Fondo blanco muy suave */
-  color: #666; /* Gris suave */
-  border-top: 1px solid #ec407a; /* Línea rosa sutil entre filas */
-  border-bottom: 1px solid #ec407a; /* Línea rosa sutil en el fondo */
+  background-color: #f9f9f9; /* Fondeado suave */
+  border-top: 2px solid #fce4ec; /* Línea superior para separar las filas */
 }
 
-/* Efecto hover en las filas de la tabla */
+/* Hover para las filas de la tabla */
 tr:hover td {
-  background-color: #f48fb1; /* Rosa claro al pasar el ratón */
-  transform: translateY(-5px); /* Efecto sutil de elevación */
-  cursor: pointer;
+  background-color: #ff80ab; /* Cambia el color al pasar el ratón */
+  transform: scale(1.05); /* Efecto de ampliación */
 }
 
-/* Fila alterna para mejorar la legibilidad */
-tr:nth-child(even) td {
-  background-color: #fce4ec; /* Rosa claro en filas pares */
-}
-
-/* Agregar un borde más suave alrededor de la tabla */
-table {
-  border: 1px solid #ec407a; /* Rosa suave */
-}
-
-/* Animación al entrar */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* Estilos del modal */
-#modal {
-  display: none;
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro con mayor opacidad */
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-  display: flex; /* Asegura que los elementos dentro del modal se centren */
+  z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
 }
 
-/* Contenedor del contenido del modal */
-.modal-overlay {
-  display: flex;
-  justify-content: center; /* Centrado horizontal */
-  align-items: center; /* Centrado vertical */
-  width: 100%;
-  height: 100%;
-}
-
-/* Estilo del contenido del modal */
 .modal-content {
   background-color: #fff;
-  padding: 40px;
-  border-radius: 20px; /* Bordes más redondeados */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra más sutil */
-  width: 80%; /* Ajuste del modal para pantallas grandes */
-  max-width: 600px; /* Tamaño máximo */
-  text-align: center; /* Asegura que el texto esté centrado */
-  animation: fadeInUp 0.5s ease-out; /* Animación de entrada */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
 }
 
-/* Animación de aparición */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.modal-content input {
+  padding: 10px;
+  width: 80%;
+  border-radius: 8px;
+  margin: 10px 0;
 }
 
-/* Modal para pantallas grandes */
-@media (min-width: 768px) {
-  #modal .modal-overlay {
-    align-items: center; /* Centrado vertical */
-    justify-content: center; /* Centrado horizontal */
-  }
-
-  .modal-content {
-    width: 60%; /* Ajustar el tamaño del modal en pantallas grandes */
-    max-width: 600px; /* Tamaño máximo */
-  }
-}
-
-/* Modal para pantallas pequeñas */
-@media (max-width: 768px) {
-  #modal .modal-overlay {
-    justify-content: center; /* Centrado horizontal */
-    align-items: center; /* Centrado vertical */
-  }
-
-  .modal-content {
-    width: 90%; /* Modal ocupa casi todo el ancho en móviles */
-    max-width: 90%; /* No excede el ancho de la pantalla */
-    height: auto; /* Ajuste de altura */
-    padding: 30px; /* Más espacio dentro del modal */
-    text-align: center; /* Asegura que el texto esté centrado */
-    border-radius: 15px; /* Bordes más suaves */
-  }
-
-  .modal-content button {
-    width: 100%; /* Botón de cerrar ocupa toda la pantalla */
-    padding: 20px;
-    font-size: 18px; /* Hacer el botón más grande en móviles */
-    background-color: #ff80ab; /* Rosa pastel */
-    color: white;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .modal-content button:hover {
-    background-color: #ec407a; /* Cambio de color en hover */
-  }
-}
-
-
-/* Botón de volver */
-button {
+.modal-content button {
   background-color: #ff80ab;
   color: white;
   border: none;
-  padding: 12px 25px;
-  border-radius: 30px;
+  padding: 10px 20px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-  transition: background-color 0.3s, transform 0.3s;
-  margin-top: 30px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-button:hover {
-  background-color: #ec407a;
-  transform: translateY(-5px);
-}
-
-/* Fondo de la tabla para cuando no hay datos */
-#temperature-table tbody {
-  text-align: center;
-  font-style: italic;
-  color: #bbb;
-}
-
-/* Enlace para navegar entre páginas */
-a {
-  text-decoration: none;
-  color: #ff80ab;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: #ec407a;
-  text-decoration: underline;
-}
-
-/* Media Queries para dispositivos móviles */
-@media (max-width: 768px) {
-  body {
-    padding: 10px; /* Menos padding en dispositivos móviles */
-  }
-
-  h1 {
-    font-size: 28px; /* Título más pequeño */
-    margin-bottom: 15px;
-  }
-
-  p {
-    font-size: 16px; /* Texto más pequeño */
-  }
-
-  #refrigerador-buttons-container {
-    padding: 20px 10px; /* Espaciado reducido */
-    margin-top: 20px;
-    grid-template-columns: 1fr 1fr; /* 2 columnas para pantallas medianas */
-  }
-
-  .refrigerador-button {
-    font-size: 18px; /* Reducir tamaño de texto en botones */
-    padding: 15px 20px; /* Reducir tamaño de botones */
-    max-width: 200px; /* Botones más pequeños */
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 24px; /* Título más pequeño */
-  }
-
-  p {
-    font-size: 14px; /* Texto más pequeño */
-  }
-
-  #refrigerador-buttons-container {
-    grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
-    padding: 10px;
-  }
-
-  .refrigerador-button {
-    font-size: 16px; /* Botones más pequeños */
-    padding: 12px 18px;
-    max-width: 180px; /* Asegura que los botones no sean demasiado grandes */
-  }
+  width: 80%;
+  margin: 10px 0;
 }

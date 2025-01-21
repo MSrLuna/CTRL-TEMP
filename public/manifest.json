@@ -1,11 +1,11 @@
 {
-  "name": "Monitoreo de Temperatura Rhenania",
-  "short_name": "Monitoreo Rhenania",
-  "description": "App para ver los datos de temperatura de los refrigeradores en la pastelería Rhenania.",
+  "name": "Monitoreo de Temperatura - Rhenania",
+  "short_name": "Rhenania",
+  "description": "Monitoreo de temperatura de refrigeradores en Rhenania",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2c3e50",
+  "theme_color": "#2196F3",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -17,5 +17,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "orientation": "portrait"
 }

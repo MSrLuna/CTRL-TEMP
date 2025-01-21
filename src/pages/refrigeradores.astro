@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Monitoreo de temperatura de refrigeradores en Rhenania" />
+    <title>Equipos - Rhenania</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/styles/style.css" />
+  </head>
+  <body>
+    <h1>Equipos registrados - Rhenania</h1>
+    <button id="back-button" style="margin-bottom: 20px;">Volver</button>
+
+    <p>Seleccione el equipo correspondiente:</p>
+
+    <div id="refrigerador-buttons-container">
+      <!-- Los botones se cargarán dinámicamente aquí -->
+    </div>
+
+    <!-- Modal para editar el nombre del equipo -->
+    <div id="edit-modal" style="display: none;">
+      <div class="modal-overlay">
+        <div class="modal-content">
+          <h2>Modificar Nombre del Equipo</h2>
+          <input type="text" id="team-name-input" placeholder="Nuevo nombre" />
+          <button id="save-name-button">Guardar</button>
+          <button onclick="closeEditModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para mostrar los mensajes -->
+    <div id="message-modal" class="message-modal" style="display: none;">
+      <div class="modal-overlay">
+        <div class="modal-content">
+          <h2 id="message-title">Mensaje</h2>
+          <p id="message-text">Contenido del mensaje</p>
+          <button id="message-close-button">Entendido</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/scripts/refrigeradores.js"></script>
+  </body>
+</html>
