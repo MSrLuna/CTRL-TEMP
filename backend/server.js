@@ -129,6 +129,41 @@ app.put('/api/updateEquipo/:id', (req, res) => {
   });
 });
 
+// Ruta para autenticar usuario
+app.post('/api/auth', (req, res) => {
+  const { username, password } = req.body;
+
+  console.log('Usuario recibido:', username);
+  console.log('Contraseña recibida:', password);
+
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Usuario y contraseña son requeridos' });
+  }
+
+  const query = 'SELECT * FROM usuarios WHERE usuario = ?';
+  db.query(query, [username], (err, results) => {
+    if (err) {
+      console.error('Error al consultar la base de datos:', err.stack);
+      return res.status(500).json({ error: 'Error en la consulta a la base de datos' });
+    }
+
+    console.log('Resultados de la consulta:', results);
+
+    if (results.length === 0) {
+      return res.status(401).json({ error: 'Usuario no encontrado' });
+    }
+
+    const usuario = results[0];
+    console.log('Contraseña almacenada:', usuario.contrasena);
+
+    if (usuario.contrasena === password) {
+      res.json({ message: 'Autenticación exitosa' });
+    } else {
+      res.status(401).json({ error: 'Contraseña incorrecta' });
+    }
+  });
+});
+
 // Iniciar servidor
 app.server = app.listen(port, () => {
   console.log(`Servidor en ejecución en http://localhost:${port}`);

@@ -168,6 +168,7 @@ tr:hover td {
   transform: scale(1.05); /* Efecto de ampliación */
 }
 
+/* Estilo para los modales */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -188,6 +189,10 @@ tr:hover td {
   text-align: center;
   max-width: 400px;
   width: 100%;
+  display: flex; /* Usar flexbox */
+  flex-direction: column; /* Organiza los elementos en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
 }
 
 .modal-content input {
@@ -207,4 +212,90 @@ tr:hover td {
   font-size: 16px;
   width: 80%;
   margin: 10px 0;
+  text-align: center; /* Asegura que el texto en el botón esté centrado */
+}
+
+#index-buttons-container {
+  display: flex;
+  flex-direction: column; /* Hace que los botones se alineen en columna */
+  gap: 10px; /* Espacio entre los botones */
+  align-items: center; /* Centra los botones */
+}
+
+/* Estilo de la tarjeta que contiene el formulario */
+#wifi-card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 600px;
+  margin: 50px auto; /* Centrado horizontal y margen superior */
+  text-align: center;
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Estilo para el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre los campos del formulario */
+}
+
+/* Estilo de las etiquetas de los campos */
+label {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Estilo de los inputs del formulario */
+input {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #fce4ec; /* Borde sutil rosa */
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Efecto focus para los inputs */
+input:focus {
+  border-color: #ec407a; /* Rosa fuerte al hacer focus */
+}
+
+/* Estilo del botón de envío */
+button {
+  background-color: #ff80ab; /* Rosa pastel */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px; /* Bordes redondeados para un toque más suave */
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
+/* Hover para el botón */
+button:hover {
+  background-color: #ec407a; /* Cambio de color a rosa fuerte */
+  transform: translateY(-5px); /* Efecto de elevación en hover */
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

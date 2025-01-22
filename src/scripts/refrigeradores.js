@@ -76,15 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
               .then(response => response.json())
               .then(data => {
                 if (data.message) {
-                  alert(data.message); // Mostrar mensaje de éxito
+                  showMessageModal('Éxito', data.message); // Mostrar el modal de éxito
                 }
               })
               .catch(error => {
                 console.error('Error al actualizar el equipo:', error);
-                alert('Hubo un error al guardar el nombre del equipo.');
+                showMessageModal('Error', 'Hubo un error al guardar el nombre del equipo.'); // Mostrar el modal de error
               });
             } else {
-              alert('El nombre no puede estar vacío.');
+              showMessageModal('Error', 'El nombre no puede estar vacío.'); // Mostrar el modal de error
             }
           };
         };
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Cuando el botón del equipo sea clickeado, redirige a la página correspondiente
         button.onclick = () => {
-          window.location.href = `/refrigerador?id=${refrigerador.id}`;
+          window.location.href = `/views/refrigerador?id=${refrigerador.id}`;
         };
 
         // Agregar el contenedor del equipo al contenedor principal
@@ -107,10 +107,24 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => console.error('Error al cargar los refrigeradores:', error));
 });
 
-// Cerrar el modal al hacer clic en "Cancelar"
-function closeEditModal() {
-  const modal = document.getElementById('edit-modal');
-  modal.style.display = 'none'; // Ocultar modal
+// Función para mostrar el modal con un mensaje específico
+function showMessageModal(title, message) {
+  const modal = document.getElementById('message-modal');
+  const modalTitle = document.getElementById('message-title');
+  const modalText = document.getElementById('message-text');
+  
+  // Establecer el contenido del título y el mensaje
+  modalTitle.textContent = title;
+  modalText.textContent = message;
+  
+  // Mostrar el modal
+  modal.style.display = 'flex';
+  
+  // Evento para cerrar el modal
+  const closeButton = document.getElementById('message-close-button');
+  closeButton.onclick = () => {
+    modal.style.display = 'none';
+  };
 }
 
 // Configuración del WebSocket y demás funcionalidades

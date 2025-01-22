@@ -1,0 +1,42 @@
+---
+import '/src/styles/style.css';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Bienvenido a Rhenania - Monitoreo de Temperatura" />
+    <title>WIFI - Rhenania</title>
+  </head>
+  <body>
+    <h1>Ingresar datos WIFI - Rhenania</h1>
+
+    <!-- Botón de regreso -->
+    <button id="back-button" style="margin-bottom: 20px;" onclick="window.location.href='/'">Volver a inicio</button>
+
+    <!-- Contenedor de la tarjeta -->
+    <div id="wifi-card">
+      <!-- Formulario para ingresar datos de la red WiFi -->
+      <form id="wifi-form" action="/api/guardarWifi" method="POST">
+        <div>
+          <label for="wifi-name">Nombre de la Red (SSID):</label>
+          <input type="text" id="wifi-name" name="wifi-name" required placeholder="Ejemplo: MiRedWiFi" />
+        </div>
+        <div>
+          <label for="wifi-password">Contraseña:</label>
+          <input type="password" id="wifi-password" name="wifi-password" required placeholder="Contraseña de WiFi" />
+        </div>
+        <div>
+          <label for="wifi-ip">Dirección IP:</label>
+          <input type="text" id="wifi-ip" name="wifi-ip" required placeholder="Ejemplo: 192.168.1.1" />
+        </div>
+        <div>
+          <button type="submit">Guardar datos WiFi</button>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="/src/scripts/wifi.js"></script>
+  </body>
+</html>
