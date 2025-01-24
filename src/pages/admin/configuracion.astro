@@ -34,43 +34,12 @@ import "/src/styles/style.css";
       >
       <button
         class="refrigerador-button"
-        onclick="window.location.href='/admin/sensores'"
-        >Lista de sensores</button
-      >
-      <button
-        class="refrigerador-button"
         onclick="window.location.href='/admin/wifi'"
         >Datos WIFI</button
       >
       <br>
     </div>
-
-    <!-- Modal de autenticación -->
-    <div id="modal" class="modal-overlay">
-      <div class="modal-content">
-        <h2>Ingrese sus credenciales</h2>
-        <form id="auth-form">
-          <label for="username">Usuario</label>
-          <input type="text" id="username" name="username" required />
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" name="password" required />
-          <button type="submit">Iniciar sesión</button>
-          <button id="close-modal" onclick="window.location.href='/'">Volver</button>
-        </form>
       </div>
     </div>
-
-    <!-- Modal para mostrar los mensajes -->
-    <div id="message-modal" class="message-modal" style="display: none;">
-      <div class="modal-overlay">
-        <div class="modal-content">
-          <h2 id="message-title">Mensaje</h2>
-          <p id="message-text">Contenido del mensaje</p>
-          <button id="message-close-button">Entendido</button>
-        </div>
-      </div>
-    </div>
-
-    <script type="module" src="/src/scripts/config/configuracion.js"></script>
   </body>
 </html>

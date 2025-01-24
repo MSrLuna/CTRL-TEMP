@@ -175,3 +175,32 @@ app.server.on('upgrade', (request, socket, head) => {
     wss.emit('connection', ws, request);
   });
 });
+
+// Obtener todos los usuarios
+app.get('/api/usuarios', (req, res) => {
+  db.query('SELECT id, nombre, apellido, usuario, email FROM usuarios', (err, results) => {
+    if (err) {
+      console.error('Error al obtener usuarios:', err.stack);
+      return res.status(500).json({ error: 'Error al obtener usuarios' });
+    }
+    res.json(results);
+  });
+});
+
+// Obtener un usuario por ID
+app.get('/api/usuarios/:id', (req, res) => {
+  const userId = req.params.id;
+
+  db.query('SELECT id, nombre, apellido, usuario, email FROM usuarios WHERE id = ?', [userId], (err, results) => {
+    if (err) {
+      console.error('Error al obtener el usuario:', err.stack);
+      return res.status(500).json({ error: 'Error al obtener el usuario' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    res.json(results[0]);
+  });
+});

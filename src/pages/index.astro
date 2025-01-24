@@ -6,16 +6,17 @@ import '/src/styles/style.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bienvenido a Rhenania - Monitoreo de Temperatura" />
     <title>Inicio - Rhenania</title>
   </head>
   <body>
     <h1>Monitoreo de Temperatura - Rhenania</h1>
     <p>Seleccione la opción deseada:</p>
     <div id="index-buttons-container">
+      <button class="refrigerador-button" id="login-button" onclick="window.location.href='/login'">Iniciar Sesión</button>
+      <button class="refrigerador-button" id="logout-button" style="display: none;">Cerrar Sesión</button>
       <button class="refrigerador-button" onclick="window.location.href='/views/refrigeradores'">Ver Equipos registrados</button>
-      <button class="refrigerador-button" onclick="window.location.href='/admin/configuracion'">Configuración</button>
-      <br>
+      <button class="refrigerador-button" onclick="window.location.href='/admin/configuracion'" id="config-button" style="display: none;">Configuración</button>
     </div>
   </body>
+  <script src="/src/scripts/index.js" type="module"></script>
 </html>

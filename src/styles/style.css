@@ -299,3 +299,99 @@ button:hover {
     transform: translateY(0);
   }
 }
+
+/* Estilo para el contenedor de la barra de búsqueda */
+#search-container {
+  display: flex;
+  justify-content: flex-start; /* Alineación a la izquierda */
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Tamaño máximo controlado */
+  margin: 40px auto;
+  padding: 15px 25px;
+  background-color: #ffffff;
+  border-radius: 50px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna */
+}
+
+/* Efecto hover para el contenedor de búsqueda */
+#search-container:hover {
+  transform: translateY(-6px); /* Elevación suave */
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15); /* Sombra más intensa */
+}
+
+/* Estilo para el select (filtro) */
+#filter-select {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #ccc; /* Borde suave */
+  border-radius: 30px;
+  background-color: #fafafa;
+  color: #555;
+  outline: none;
+  margin-right: 20px;
+  transition: all 0.3s ease;
+  width: 160px; /* Ancho ligeramente mayor */
+  flex-shrink: 0;
+}
+
+/* Efecto de focus en el select */
+#filter-select:focus {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(100, 100, 100, 0.2); /* Suave sombra en foco */
+  border: 2px solid #76c7c0; /* Azul suave */
+}
+
+/* Estilo para el input de búsqueda */
+#search-input {
+  padding: 12px 22px;
+  font-size: 16px;
+  border: 2px solid #ddd; /* Borde gris más claro */
+  border-radius: 30px;
+  width: 100%;
+  max-width: 320px;
+  outline: none;
+  background-color: #fafafa;
+  color: #444;
+  transition: all 0.3s ease;
+}
+
+/* Efecto de focus en el input */
+#search-input:focus {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(100, 100, 100, 0.2); /* Suave sombra */
+  border: 2px solid #76c7c0; /* Azul suave */
+}
+
+/* Estilo del botón dentro de la barra de búsqueda */
+#search-container button {
+  background-color: #76c7c0; /* Azul suave */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin-left: 20px;
+  flex-shrink: 0;
+}
+
+/* Efecto hover en el botón de búsqueda */
+#search-container button:hover {
+  transform: scale(1.05);
+  background-color: #58b7b4; /* Azul más intenso */
+}
+
+/* Efecto focus en el botón */
+#search-container button:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(118, 199, 192, 0.6); /* Brillo suave */
+}

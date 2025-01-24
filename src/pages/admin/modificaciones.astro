@@ -6,14 +6,35 @@ import '/src/styles/style.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bienvenido a Rhenania - Monitoreo de Temperatura" />
-    <title>Historial de movimientos - Rhenania</title>
+    <title>Movimientos - Rhenania</title>
   </head>
   <body>
-    <h1>Historial de movimientos - Rhenania</h1>
-    <button id="back-button" style="margin-bottom: 20px;" onclick="window.location.href='/'">Volver a inicio</button>
+    <button onclick="window.history.back();">Volver</button>
+    <table id="temperature-table">
+      <thead>
+        <tr>
+          <th>Fecha y hora</th>
+          <th>Usuario</th>
+          <th>Movimiento</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-    <p>Lista de movimientos:</p>
-        
-    </body>
+    <!-- Modal para mostrar los datos adicionales -->
+    <div id="modal" style="display: none;">
+      <div class="modal-overlay">
+        <div class="modal-content">
+          <p><strong>ID:</strong> <span id="modal-uid"></span></p>
+          <p><strong>Nombre:</strong> <span id="modal-uid"></span></p>
+          <p><strong>Apellido:</strong> <span id="modal-uid"></span></p>
+          <p><strong>Email:</strong> <span id="modal-uid"></span></p>
+          <p><strong>Descripción del movimiento:</strong> <span id="modal-uid"></span></p>
+          <button onclick="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>    
+
+    <script type="module" src="/src/scripts/config/modificaciones.js"></script>
+  </body>
 </html>
