@@ -20,23 +20,27 @@ import '/src/styles/style.css';
       <!-- Formulario para ingresar datos de la red WiFi -->
       <form id="wifi-form" action="/api/guardarWifi" method="POST">
         <div>
-          <label for="wifi-name">Nombre de la Red (SSID):</label>
-          <input type="text" id="wifi-name" name="wifi-name" required placeholder="Ejemplo: MiRedWiFi" />
+            <label for="wifi-name">Nombre de la Red (SSID):</label>
+            <input type="text" id="wifi-name" name="wifiName" required placeholder="Ejemplo: MiRedWiFi" />
         </div>
         <div>
-          <label for="wifi-password">Contraseña:</label>
-          <input type="password" id="wifi-password" name="wifi-password" required placeholder="Contraseña de WiFi" />
+            <label for="wifi-password">Contraseña:</label>
+            <input type="password" id="wifi-password" name="wifiPassword" required placeholder="Contraseña de WiFi" />
         </div>
         <div>
-          <label for="wifi-ip">Dirección IP:</label>
-          <input type="text" id="wifi-ip" name="wifi-ip" required placeholder="Ejemplo: 192.168.1.1" />
+            <label for="wifi-ip">Dirección IP:</label>
+            <input type="text" id="wifi-ip" name="wifiIp" required placeholder="Ejemplo: 192.168.1.1" />
         </div>
         <div>
-          <button type="submit">Guardar datos WiFi</button>
+            <label for="medicion-intervalo">Intervalo de Medición (ms):</label>
+            <input type="number" id="medicion-intervalo" name="medicionIntervalo" required placeholder="Ejemplo: 10000" />
         </div>
-      </form>
+        <div>
+            <button type="submit">Guardar datos WiFi</button>
+        </div>
+    </form>
     </div>
 
-    <script type="module" src="/src/scripts/wifi.js"></script>
+    <script type="module" src="/src/scripts/config/wifi.js"></script>
   </body>
 </html>
