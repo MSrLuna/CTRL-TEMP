@@ -1,0 +1,107 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fce4ec; /* Rosa claro pastel */
+    color: #333;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    background-size: cover;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  
+  /* Título principal */
+  h1 {
+    text-align: center;
+    font-size: 48px;
+    color: #ec407a; /* Rosa fuerte */
+    margin-top: 50px;
+    font-family: 'Dancing Script', cursive;
+    animation: fadeIn 2s ease-out;
+  }
+  
+  /* Párrafos */
+  p {
+    text-align: center;
+    font-size: 20px;
+    color: #555;
+    font-weight: 400;
+    animation: slideIn 1s ease-out;
+  }
+  
+  /* Contenedor de botones */
+  #index-buttons-container {
+    display: flex;
+    flex-direction: column; /* Botones en columna */
+    gap: 15px; /* Espaciado entre botones */
+    align-items: center; /* Centrado horizontal */
+    padding-top: 40px;
+    animation: fadeIn 2s ease-out;
+  }
+  
+  /* Estilo de los botones generales */
+  .refrigerador-button {
+    padding: 18px 35px;
+    font-size: 18px;
+    color: white;
+    background-color: #ff80ab; /* Rosa pastel intenso */
+    border: none;
+    border-radius: 50px; /* Bordes redondeados */
+    cursor: pointer;
+    max-width: 260px; /* Ancho máximo */
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    transition: all 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Texto en mayúsculas */
+  }
+  
+  /* Efecto hover en los botones */
+  .refrigerador-button:hover {
+    background-color: #ec407a; /* Rosa fuerte */
+    transform: translateY(-4px); /* Elevación sutil */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra más profunda */
+  }
+  
+  /* Efecto focus (cuando se hace clic) */
+  .refrigerador-button:focus {
+    outline: none; /* Elimina el borde por defecto */
+    box-shadow: 0 0 10px #ec407a; /* Brillo elegante en focus */
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 36px;
+    }
+  
+    .refrigerador-button {
+      padding: 15px 30px;
+      font-size: 16px;
+    }
+  }

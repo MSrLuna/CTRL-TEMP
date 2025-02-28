@@ -1,0 +1,57 @@
+---
+import '/src/styles/temperaturas.css';
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuración - Rhenania</title>
+  </head>
+  <body>
+    <h1>Configuración de Niveles de Peligro</h1>
+    <button id="back-button" style="margin-bottom: 20px;" onclick="window.location.href='/admin/configuracion'">Volver a inicio</button>
+
+    <form id="danger-level-form">
+      <h2>Refrigerador</h2>
+      <label>
+        Muy Caliente (> °C):
+        <input type="number" name="refrigerador-muy-caliente" value="25" />
+      </label>
+      <label>
+        Caliente (> °C):
+        <input type="number" name="refrigerador-caliente" value="20" />
+      </label>
+      <label>
+        Frío (<Fragment> °C):
+        <input type="number" name="refrigerador-frio" value="5" />
+      </label>
+      <label>
+        Muy Frío (<Fragment> °C):
+        <input type="number" name="refrigerador-muy-frio" value="2" />
+      </label>
+
+      <h2>Congelador</h2>
+      <label>
+        Muy Caliente (> °C):
+        <input type="number" name="congelador-muy-caliente" value="-10" />
+      </label>
+      <label>
+        Caliente (> °C):
+        <input type="number" name="congelador-caliente" value="-15" />
+      </label>
+      <label>
+        Frío (<Fragment> °C):
+        <input type="number" name="congelador-frio" value="-20" />
+      </label>
+      <label>
+        Muy Frío (<Fragment> °C):
+        <input type="number" name="congelador-muy-frio" value="-25" />
+      </label>
+
+      <button type="submit">Guardar Cambios</button>
+    </form>
+    <br>
+    <br>
+    <script type="module" src="/src/scripts/config/modificaciones.js"></script>
+  </body>
+</html>

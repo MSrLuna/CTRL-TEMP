@@ -1,7 +1,6 @@
 ---
 import '/src/styles/style.css';
 ---
-
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -15,12 +14,12 @@ import '/src/styles/style.css';
         <tr>
           <th>Fecha</th>
           <th>Temperatura (°C)</th>
+          <th>Nivel de Peligro</th> <!-- Nueva columna -->
           <th>Equipo</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
-
     <!-- Modal para mostrar los datos adicionales -->
     <div id="modal" style="display: none;">
       <div class="modal-overlay">
@@ -31,7 +30,6 @@ import '/src/styles/style.css';
         </div>
       </div>
     </div>    
-
     <script type="module" src="/src/scripts/refrigerador.js"></script>
   </body>
 </html>

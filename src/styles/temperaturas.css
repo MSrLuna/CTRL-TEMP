@@ -1,0 +1,128 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fce4ec; /* Rosa claro pastel */
+    color: #333;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    background-size: cover;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  
+  /* Título principal */
+  h1 {
+    text-align: center;
+    font-size: 48px;
+    color: #ec407a; /* Rosa fuerte */
+    margin-top: 50px;
+    font-family: 'Dancing Script', cursive;
+    animation: fadeIn 2s ease-out;
+  }
+  
+ /* Botón "Volver a inicio" */
+#back-button {
+    display: block; /* Cambiamos a block para que ocupe todo el ancho disponible */
+    margin: 20px auto; /* Centrado horizontal con margen automático */
+    background-color: #ff80ab; /* Rosa pastel */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px; /* Bordes redondeados para un toque más suave */
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Espaciado entre letras */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    max-width: 300px; /* Ancho máximo opcional */
+    width: fit-content; /* Ajusta el ancho al contenido del texto */
+  }
+  
+  /* Hover para el botón "Volver a inicio" */
+  #back-button:hover {
+    background-color: #ec407a; /* Cambio de color a rosa fuerte */
+    transform: translateY(-4px); /* Efecto de elevación sutil */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra más profunda en hover */
+  }
+  
+  /* Contenedor del formulario */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espaciado entre elementos */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    animation: fadeIn 1.5s ease-out;
+  }
+  
+  /* Etiquetas de los campos */
+  label {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  /* Inputs de los campos */
+  input[type="number"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #fce4ec; /* Borde sutil rosa */
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+  }
+  
+  /* Efecto focus para los inputs */
+  input[type="number"]:focus {
+    border-color: #ec407a; /* Rosa fuerte al hacer focus */
+    box-shadow: 0 0 10px rgba(236, 64, 122, 0.3); /* Brillo suave */
+  }
+  
+  /* Botón de envío */
+  button[type="submit"] {
+    background-color: #ff80ab; /* Rosa pastel */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px; /* Bordes redondeados para un toque más suave */
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Espaciado entre letras */
+  }
+  
+  /* Hover para el botón de envío */
+  button[type="submit"]:hover {
+    background-color: #ec407a; /* Cambio de color a rosa fuerte */
+    transform: translateY(-5px); /* Efecto de elevación en hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra más profunda en hover */
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

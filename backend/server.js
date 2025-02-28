@@ -16,7 +16,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '0808', // Ajusta la contraseña según tu configuración
+  password: 'Luna0808.', // Ajusta la contraseña según tu configuración
   database: 'pasteleria_rhenania',
   timezone: 'Z', // Usamos UTC en la conexión.
 });
@@ -227,6 +227,24 @@ app.server.on('upgrade', (request, socket, head) => {
   wss.handleUpgrade(request, socket, head, (ws) => {
     wss.emit('connection', ws, request);
   });
+});
+
+app.post('/api/temperaturas', (req, res) => {
+  const { refrigerador, congelador } = req.body;
+
+  // Actualizar los niveles de peligro (puedes guardarlos en una base de datos si es necesario)
+  dangerLevels.refrigerador = refrigerador;
+  dangerLevels.congelador = congelador;
+
+  // Notificar a los clientes conectados a través de WebSocket
+  wss.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify({ type: 'update-danger-levels', data: dangerLevels }));
+    }
+  });
+
+  // Devolver una respuesta exitosa
+  res.status(200).json({ message: 'Niveles de peligro actualizados correctamente' });
 });
 
 // Middleware de manejo de errores
