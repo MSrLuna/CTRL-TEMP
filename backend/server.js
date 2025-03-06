@@ -218,8 +218,8 @@ app.post('/api/guardarWifi', (req, res) => {
 });
 
 // Iniciar servidor
-app.server = app.listen(port, () => {
-  console.log(`Servidor en ejecución en http://localhost:${port}`);
+app.server = app.listen(port, '0.0.0.0', () => {
+  console.log(`Servidor en ejecución en http://0.0.0.0:${port}`);
 });
 
 // Configurar WebSocket con Express
