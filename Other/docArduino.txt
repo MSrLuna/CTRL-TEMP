@@ -1,0 +1,78 @@
+DOCUMENTACIÓN DEL CÓDIGO
+
+Este código implementa un sistema basado en ESP32 para monitorear la temperatura de un refrigerador y enviar los datos a un servidor. Además, proporciona un modo AP para configurar la conexión Wi-Fi y otros parámetros de manera dinámica.
+
+LIBRERÍAS UTILIZADAS
+- WiFi.h: Manejo de conexión Wi-Fi.
+- HTTPClient.h: Envío de datos mediante HTTP.
+- OneWire.h y DallasTemperature.h: Lectura del sensor de temperatura.
+- ArduinoJson.h: Formateo de datos en JSON.
+- NTPClient.h y WiFiUdp.h: Obtención de la fecha y hora exacta mediante NTP.
+- EEPROM.h: Almacenamiento de configuración persistente.
+- DNSServer.h y WebServer.h: Creación de un servidor web para configuración.
+
+DEFINICIONES CLAVES
+#define REFRIGERADOR_ID 1
+#define DEVICE_UID "001"
+#define EQUIPO "Refrigerador"
+#define ONE_WIRE_BUS 4
+#define LED_ROJO 12
+#define LED_VERDE 13
+#define LED_AZUL 14
+
+Inicializa valores constantes como el ID del refrigerador, UID del dispositivo, tipo de equipo y los pines GPIO para el sensor y LED.
+
+INICIALIZACIÓN DE SENSORES Y CLIENTE NTP
+OneWire ourWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&ourWire);
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 0, 3600000);
+
+Esto permite la comunicación con el sensor de temperatura y la obtención de hora exacta.
+
+VARIABLES DE CONFIGURACIÓN
+String WIFI_SSID_DINAMICO = "";
+String WIFI_PASSWORD_DINAMICO = "";
+String SERVER_BASE_URL_DINAMICO = "";
+unsigned long TIEMPO_MEDICION_DINAMICO = 10000;
+
+Estas variables almacenan de forma dinámica la configuración del Wi-Fi y la frecuencia de mediciones.
+
+MODO AP PARA CONFIGURACIÓN
+const char *AP_SSID = "tempArduino001";
+const char *AP_PASSWORD = "";
+
+Se configura un Access Point (AP) sin contraseña para configurar el dispositivo.
+
+FUNCIÓN setup()
+Configura los LED, carga la configuración guardada, activa el modo AP y comienza a leer temperaturas.
+
+FUNCIÓN loop()
+Si no hay Wi-Fi, mantiene el modo AP. Luego, lee la temperatura y la envía al servidor.
+
+CONECTARSE A WI-FI GUARDADO
+WiFi.begin(WIFI_SSID_DINAMICO.c_str(), WIFI_PASSWORD_DINAMICO.c_str());
+
+Esta función intenta conectarse a la red Wi-Fi previamente guardada.
+
+LEER LA TEMPERATURA
+sensors.requestTemperatures();
+return sensors.getTempCByIndex(0);
+
+Obtiene la temperatura del sensor DS18B20.
+
+OBTENER FECHA Y HORA
+Se usa el cliente NTP para obtener la fecha y hora actual en formato ISO 8601.
+
+ENVIAR DATOS AL SERVIDOR
+Se crea un JSON con la información de temperatura y se envía a un servidor mediante HTTP POST.
+
+MODO AP Y SERVIDOR WEB
+Se activa el modo AP y se crea un servidor web para configuración de Wi-Fi.
+
+ALMACENAR Y CARGAR CONFIGURACIÓN
+Los datos se guardan en EEPROM para conservar la configuración después de reiniciar el dispositivo.
+
+CONCLUSIÓN
+Este código permite configurar y monitorear un refrigerador, enviando datos a un servidor y almacenando configuraciones de manera flexible.
+
